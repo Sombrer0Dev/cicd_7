@@ -11,7 +11,7 @@ def create_order():
     if not auth_token:
         return jsonify({'message': 'Unauthorized'}), 403
 
-    auth_response = requests.post('http://auth_service:5001/login', json={'username': 'user1', 'password': 'password123'})
+    auth_response = requests.post('http://auth_service:5002/login', json={'username': 'user1', 'password': 'password123'})
 
     if auth_response.status_code != 200:
         return jsonify({'message': 'Authentication failed'}), 403
@@ -23,4 +23,4 @@ def create_order():
     return jsonify({'message': 'Order created', 'order_id': order_id}), 201
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=5002)
+    app.run(host='0.0.0.0', port=5003)
